@@ -1,0 +1,50 @@
+databaseChangeLog:
+  - changeSet:
+      id: createFollowingTable
+      author: indrajit
+      changes:
+        - createTable:
+            tableName: followings
+            columns:
+              - column:
+                  name: following_id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: following_user_id
+                  type: int
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: addForeignKeyConstraintUser
+      author: indrajit
+      changes:
+      - addForeignKeyConstraint:
+          baseColumnNames: user_id
+          baseTableName: followings
+          constraintName: fk_following_user
+          onDelete: CASCADE
+          onUpdate: RESTRICT
+          referencedColumnNames: user_id
+          referencedTableName: users
+
+  - changeSet:
+      id: addForeignKeyConstraintFollowingUser
+      author: indrajit
+      changes:
+      - addForeignKeyConstraint:
+          baseColumnNames: following_user_id
+          baseTableName: followings
+          constraintName: fk_following_following_user
+          onDelete: CASCADE
+          onUpdate: RESTRICT
+          referencedColumnNames: user_id
+          referencedTableName: users
