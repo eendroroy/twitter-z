@@ -26,7 +26,7 @@ User interface can be simple but has to **contain as much information as possibl
 
             4. this will be the name other users will see in the system
 
-        3. nickname (optional)
+        3. nickname (required)
 
             5. if not provided first part of email address (in this case "example" will be used as nickname)
 
