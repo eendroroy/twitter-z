@@ -1,0 +1,23 @@
+extends ../layout/layout
+
+block page_title
+  h2 Welcome Zombie
+
+block body
+  form.form-horizontal(action='/user/login', method='POST')
+
+    .form-group.clearfix
+      .col-sm-3.text-right
+        label.control-label(for="username") Username
+      .col-sm-6
+        input#username.form-control(type='text', name='username', placeholder='Username')
+
+    .form-group.clearfix
+      .col-sm-3.text-right
+        label.control-label(for="password") Password
+      .col-sm-6
+        input#password.form-control(type='password', placeholder='Password', name='password')
+
+    .form-group.clearfix
+      .col-sm-offset-3.col-sm-6.text-right
+        button.btn.btn-primary(name='Submit', value='Login', type='Submit') Submit

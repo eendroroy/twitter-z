@@ -1,0 +1,59 @@
+extends ../layout/layout
+
+block page_title
+  h2 Welcome Zombie
+
+block body
+  form.form-horizontal(action='/user/registration', method='POST')
+
+
+    if errors
+      .form-group
+        .col-sm-offset-3.col-sm-6
+          .text-danger
+            h4.text-danger #{errors.size()} error(s) prohibited this form submission
+            ul
+              for error in errors
+                li #{error.getDefaultMessage()}
+
+    .form-group.clearfix
+      .col-sm-3.text-right
+        label.control-label(for="fullname") Full Name
+      .col-sm-6
+        input#fullname.form-control(type='text', name='fullName', placeholder='Full Name', value=user.getFullName())
+
+    .form-group.clearfix
+      .col-sm-3.text-right
+        label.control-label(for="username") Username
+      .col-sm-6
+        input#username.form-control(type='text', name='userName', placeholder='Username', value=user.getUserName())
+
+    .form-group.clearfix
+      .col-sm-3.text-right
+        label.control-label(for="email") Email
+      .col-sm-6
+        input#email.form-control(type='text', name='email', placeholder='Email', value=user.getEmail())
+
+    .form-group.clearfix
+      .col-sm-3.text-right
+        label.control-label(for="date-of-birth") Email
+      .col-sm-6
+        input#date-of-birth.form-control(
+          type='text', name='date_of_birth', placeholder='Date of birth', value=user.getDateOfBirth()
+        )
+
+    .form-group.clearfix
+      .col-sm-3.text-right
+        label.control-label(for="password") Password
+      .col-sm-6
+        input#password.form-control(type='password', name='password', placeholder='Password')
+
+    .form-group.clearfix
+      .col-sm-3.text-right
+        label.control-label(for="password-confirm") Confirm Password
+      .col-sm-6
+        input#password-confirm.form-control(type='password', name='password_confirm', placeholder='Password')
+
+    .form-group.clearfix
+      .col-sm-offset-3.col-sm-6.text-right
+        button.btn.btn-primary(type='submit') Submit
