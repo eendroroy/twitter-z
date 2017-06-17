@@ -1,0 +1,45 @@
+databaseChangeLog:
+  - changeSet:
+      id: createUserTable
+      author: indrajit
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: user_id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: password
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: fullname
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: username
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: date_of_birth
+                  type: date
+                  constraints:
+                    nullable: true
+              - column:
+                  name: enabled
+                  type: int
+                  constraints:
+                    nullable: false
