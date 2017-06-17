@@ -1,0 +1,18 @@
+extends ../layout/layout
+
+block page_title
+  h2 Twitter for Zombies
+
+block body
+  if current_user
+    h3
+      | Welcome to TfZ
+    br
+    h3
+      | Meet your fellow Zombies
+  else
+    h4 Who the heck are you?
+    h3
+      a(href="/user/login") Prove yourself a Zombie!
+    h3
+      a(href="/user/registration") Become a Zombie!
