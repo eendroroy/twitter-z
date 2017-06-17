@@ -67,9 +67,7 @@ public class UserController extends BaseController {
         } else {
             userService.saveUser(user);
             modelAndView.addObject("successMessage", "User has been registered successfully");
-            modelAndView.addObject("user", new User());
-            modelAndView.setViewName("user/registration");
-
+            modelAndView.setViewName("user/login");
         }
         return modelAndView;
     }

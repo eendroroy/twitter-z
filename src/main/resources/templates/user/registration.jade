@@ -36,10 +36,10 @@ block body
 
     .form-group.clearfix
       .col-sm-3.text-right
-        label.control-label(for="date-of-birth") Email
+        label.control-label(for="date-of-birth") Date of Birth
       .col-sm-6
-        input#date-of-birth.form-control(
-          type='text', name='date_of_birth', placeholder='Date of birth', value=user.getDateOfBirth()
+        input#date-of-birth.form-control.datetimepicker(
+          type='text', name='dateOfBirth', placeholder='Date of birth', value=user.getDateOfBirth()
         )
 
     .form-group.clearfix
