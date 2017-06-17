@@ -3,9 +3,11 @@ package com.indrajit.tfz.model;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.sql.Date;
+import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 /**
  * @author indrajit
@@ -38,7 +40,8 @@ public class User {
     private String userName;
 
     @Column(name = "date_of_birth")
-//    @NotEmpty(message = "*Please provide your date of birth")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @NotNull(message = "*Please provide your date of birth")
     private Date dateOfBirth;
 
     @Column(name = "enabled")
