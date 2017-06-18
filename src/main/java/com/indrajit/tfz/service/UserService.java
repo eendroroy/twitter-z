@@ -7,8 +7,8 @@ import com.indrajit.tfz.model.User;
  */
 
 public interface UserService {
-    public User findUserByEmail(String email);
-    public User findUserByUserName(String userName);
-    public void saveUser(User user);
-    public User currentUser();
+    User findUserByEmail(String email);
+    User findUserByUserName(String userName);
+    void saveUser(User user);
+    User currentUser();
 }
