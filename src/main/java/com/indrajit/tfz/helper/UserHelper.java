@@ -3,7 +3,7 @@ package com.indrajit.tfz.helper;
 import com.domingosuarez.boot.autoconfigure.jade4j.JadeHelper;
 import com.indrajit.tfz.model.User;
 import com.indrajit.tfz.service.UserService;
-import com.indrajit.tfz.service.impl.UserServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @author indrajit
@@ -11,13 +11,15 @@ import com.indrajit.tfz.service.impl.UserServiceImpl;
 
 @JadeHelper("UH")
 public class UserHelper {
+
+    @Autowired
+    UserService userService;
+
     public boolean following(User follower, User following){
-        UserService userService = new UserServiceImpl();
         return userService.following(follower, following);
     }
 
     public boolean isCurrentUser(User user){
-        UserService userService = new UserServiceImpl();
         return userService.isCurrentUser(user);
     }
 }
