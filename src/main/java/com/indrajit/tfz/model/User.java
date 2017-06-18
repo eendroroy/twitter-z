@@ -8,6 +8,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author indrajit
@@ -46,6 +48,15 @@ public class User {
 
     @Column(name = "enabled")
     private int enabled;
+
+    @ManyToMany(cascade={CascadeType.ALL})
+    @JoinTable(name="followings",
+            joinColumns={@JoinColumn(name="user_id")},
+            inverseJoinColumns={@JoinColumn(name="following_user_id")})
+    private Set<User> followings = new HashSet<>();
+
+    @ManyToMany(mappedBy = "followings")
+    private Set<User> followers = new HashSet<>();
 
     public int getId() {
         return id;
@@ -105,5 +116,21 @@ public class User {
 
     public void setEnabled(int enabled) {
         this.enabled = enabled;
+    }
+
+    public Set<User> getFollowings() {
+        return followings;
+    }
+
+    public void setFollowings(Set<User> followings) {
+        this.followings = followings;
+    }
+
+    public Set<User> getFollowers() {
+        return followers;
+    }
+
+    public void setFollowers(Set<User> followers) {
+        this.followers = followers;
     }
 }

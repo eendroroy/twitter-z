@@ -85,4 +85,14 @@ public class UserController extends BaseController {
         return modelAndView;
     }
 
+    @RequestMapping(value="/follow/{userName}", method = RequestMethod.GET)
+    public ModelAndView follow(@PathVariable(name = "userName") String userName){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("user", userService.currentUser());
+        userService.follow(userName);
+        modelAndView.addObject("successMessage", "Now following " + userName);
+        modelAndView.setViewName("user/profile");
+        return modelAndView;
+    }
+
 }

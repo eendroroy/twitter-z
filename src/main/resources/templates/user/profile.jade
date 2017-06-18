@@ -10,5 +10,10 @@ block body
     h3= user.getEmail()
     h3= user.getUserName()
     h3= dateHelper.format( user.getDateOfBirth() )
+    ul
+      for folllow in user.getFollowings()
+        li= folllow.getUserName()
+    if user.getId() != current_user.getId()
+      a.btn.btn-primary(href="/user/follow/#{user.getUserName()}") Follow
   else
     h3 User not found

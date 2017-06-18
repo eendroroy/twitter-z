@@ -10,6 +10,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Set;
+
 /**
  * @author indrajit
  */
@@ -48,6 +50,19 @@ public class UserServiceImpl implements UserService{
             return null;
         }
         return findUserByUserName(authentication.getName());
+    }
+
+    @Override
+    public void follow(String userName) {
+        User currentUser = currentUser();
+        if(currentUser == null){
+            return;
+        }
+        User follow_user = findUserByUserName(userName);
+        Set<User> followings = currentUser.getFollowings();
+        followings.add(follow_user);
+        currentUser().setFollowings(followings);
+        userRepository.save(currentUser);
     }
 
 }
