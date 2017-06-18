@@ -11,6 +11,7 @@ public interface UserService {
     User findUserByUserName(String userName);
     void saveUser(User user);
     User currentUser();
+    boolean isCurrentUser(User user);
     void follow(String userName);
     boolean following(User follower, User following);
 }

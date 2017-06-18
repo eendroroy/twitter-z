@@ -15,4 +15,9 @@ public class UserHelper {
         UserService userService = new UserServiceImpl();
         return userService.following(follower, following);
     }
+
+    public boolean isCurrentUser(User user){
+        UserService userService = new UserServiceImpl();
+        return userService.isCurrentUser(user);
+    }
 }

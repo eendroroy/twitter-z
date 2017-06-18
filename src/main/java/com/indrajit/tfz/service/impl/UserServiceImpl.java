@@ -53,6 +53,11 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public boolean isCurrentUser(User user) {
+        return user.getId() == currentUser().getId();
+    }
+
+    @Override
     public void follow(String userName) {
         User currentUser = currentUser();
         if(currentUser == null){
