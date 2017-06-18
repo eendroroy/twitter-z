@@ -16,7 +16,6 @@ public class HomeController extends BaseController{
     @RequestMapping(value="/", method = RequestMethod.GET)
     public ModelAndView home(){
         ModelAndView modelAndView = new ModelAndView();
-        setCurrentUser(modelAndView);
         modelAndView.setViewName("home/index");
         return modelAndView;
     }
