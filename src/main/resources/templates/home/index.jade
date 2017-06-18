@@ -5,11 +5,25 @@ block page_title
 
 block body
   if currentUser
-    h3
-      | Welcome to TfZ
-    br
-    h3
-      | Meet your fellow Zombies
+    .col-lg-3
+      .list-group
+        .list-group-item
+          = currentUser.fullName
+          | (
+          = currentUser.userName
+          | )
+        .list-group-item
+          = currentUser.email
+        .list-group-item
+          = DH.format(currentUser.dateOfBirth)
+    .col-lg-9
+      textarea.form-control
+      br
+      button.btn.btn-primary.pull-right Tweet
+      .clearfix
+      hr
+      .clearfix
+        | Following users' tweets will be here
   else
     h4 Who the heck are you?
     h3
