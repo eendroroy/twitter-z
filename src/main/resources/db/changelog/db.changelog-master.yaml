@@ -6,3 +6,6 @@ databaseChangeLog:
   - include:
       file: db.changelog-followings.yaml
       relativeToChangelogFile: true
+  - include:
+      file: db.changelog-tweets.yaml
+      relativeToChangelogFile: true

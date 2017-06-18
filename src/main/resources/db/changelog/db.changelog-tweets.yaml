@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: createTweetTable
+      author: indrajit
+      changes:
+        - createTable:
+            tableName: tweets
+            columns:
+              - column:
+                  name: tweet_id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: Tweet
+                  type: text
+                  constraints:
+                    nullable: false

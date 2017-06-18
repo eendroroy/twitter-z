@@ -58,6 +58,9 @@ public class User {
     @ManyToMany(mappedBy = "followings")
     private Set<User> followers = new HashSet<>();
 
+    @OneToMany(mappedBy = "tweets")
+    private Set<Tweet> tweets = new HashSet<>();
+
     public int getId() {
         return id;
     }
@@ -133,4 +136,13 @@ public class User {
     public void setFollowers(Set<User> followers) {
         this.followers = followers;
     }
+
+    public Set<Tweet> getTweets() {
+        return tweets;
+    }
+
+    public void setTweets(Set<Tweet> tweets) {
+        this.tweets = tweets;
+    }
+
 }
