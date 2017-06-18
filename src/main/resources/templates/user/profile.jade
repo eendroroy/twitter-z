@@ -1,0 +1,14 @@
+extends ../layout/layout
+
+block page_title
+  if user
+    h2= user.getFullName()
+  else
+    h2 User Profile
+block body
+  if user
+    h3= user.getEmail()
+    h3= user.getUserName()
+    h3= dateHelper.format( user.getDateOfBirth() )
+  else
+    h3 User not found

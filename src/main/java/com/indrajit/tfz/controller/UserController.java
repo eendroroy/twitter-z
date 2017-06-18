@@ -6,6 +6,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,7 +26,6 @@ public class UserController extends BaseController {
     @RequestMapping(value="/login", method = RequestMethod.GET)
     public ModelAndView login(){
         ModelAndView modelAndView = new ModelAndView();
-        setCurrentUser(modelAndView);
         modelAndView.setViewName("user/login");
         return modelAndView;
     }
@@ -39,11 +39,9 @@ public class UserController extends BaseController {
         return "redirect:/user/login?logout";
     }
 
-
     @RequestMapping(value="/registration", method = RequestMethod.GET)
     public ModelAndView registration(){
         ModelAndView modelAndView = new ModelAndView();
-        setCurrentUser(modelAndView);
         User user = new User();
         modelAndView.addObject("user", user);
         modelAndView.setViewName("user/registration");
@@ -53,7 +51,6 @@ public class UserController extends BaseController {
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView();
-        setCurrentUser(modelAndView);
         User userExists = userService.findUserByEmail(user.getEmail());
         if (userExists != null) {
             bindingResult
@@ -69,6 +66,22 @@ public class UserController extends BaseController {
             modelAndView.addObject("successMessage", "User has been registered successfully");
             modelAndView.setViewName("user/login");
         }
+        return modelAndView;
+    }
+
+    @RequestMapping(value="/profile", method = RequestMethod.GET)
+    public ModelAndView profile(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("user", userService.currentUser());
+        modelAndView.setViewName("user/profile");
+        return modelAndView;
+    }
+
+    @RequestMapping(value="/profile/{userName}", method = RequestMethod.GET)
+    public ModelAndView profile(@PathVariable(name = "userName") String userName){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("user", userService.findUserByUserName(userName));
+        modelAndView.setViewName("user/profile");
         return modelAndView;
     }
 
