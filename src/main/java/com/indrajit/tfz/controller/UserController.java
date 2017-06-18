@@ -95,4 +95,20 @@ public class UserController extends BaseController {
         return modelAndView;
     }
 
+    @RequestMapping(value="/followers", method = RequestMethod.GET)
+    public ModelAndView followers(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("user", userService.currentUser());
+        modelAndView.setViewName("user/followers");
+        return modelAndView;
+    }
+
+    @RequestMapping(value="/followers/{userName}", method = RequestMethod.GET)
+    public ModelAndView followers(@PathVariable(name = "userName") String userName){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("user", userService.findUserByUserName(userName));
+        modelAndView.setViewName("user/followers");
+        return modelAndView;
+    }
+
 }

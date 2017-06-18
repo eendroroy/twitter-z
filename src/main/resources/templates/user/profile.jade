@@ -18,9 +18,9 @@ block body
         .list-group
           .list-group-item
             if UH.following(currentUser, user)
-              a.btn.btn-primary.btn-block(href="/user/follow/#{user.getUserName()}") Follow
-            else
               a.btn.btn-primary.btn-block(href="/user/unfollow/#{user.getUserName()}") Unfollow
+            else
+              a.btn.btn-primary.btn-block(href="/user/follow/#{user.getUserName()}") Follow
       else
         .list-group
           .list-group-item
