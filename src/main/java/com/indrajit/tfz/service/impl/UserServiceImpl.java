@@ -65,4 +65,9 @@ public class UserServiceImpl implements UserService{
         userRepository.save(currentUser);
     }
 
+    @Override
+    public boolean following(User follower, User following) {
+        return follower.getFollowings().contains(following);
+    }
+
 }

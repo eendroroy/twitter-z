@@ -12,4 +12,5 @@ public interface UserService {
     void saveUser(User user);
     User currentUser();
     void follow(String userName);
+    boolean following(User follower, User following);
 }
