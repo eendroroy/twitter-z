@@ -1,19 +1,39 @@
 extends ../layout/layout
 
-block page_title
-  if user
-    h2= user.getFullName()
-  else
-    h2 User Profile
 block body
   if user
-    h3= user.getEmail()
-    h3= user.getUserName()
-    h3= DH.format( user.getDateOfBirth() )
-    ul
-      for folllow in user.getFollowings()
-        li= folllow.getUserName()
-    if user.getId() != current_user.getId()
-      a.btn.btn-primary(href="/user/follow/#{user.getUserName()}") Follow
+    .col-lg-3
+      .list-group
+        .list-group-item
+          = user.fullName
+          | (
+          = user.userName
+          | )
+        .list-group-item
+          = user.email
+        .list-group-item
+          = DH.format(user.dateOfBirth)
+
+      if !UH.isCurrentUser(user)
+        .list-group
+          .list-group-item
+            if UH.following(currentUser, user)
+              a.btn.btn-primary.btn-block(href="/user/follow/#{user.getUserName()}") Follow
+            else
+              a.btn.btn-primary.btn-block(href="/user/unfollow/#{user.getUserName()}") Unfollow
+      else
+        .list-group
+          .list-group-item
+            a.btn.btn-primary.btn-block(href="/user/followings") Followings
+          .list-group-item
+            a.btn.btn-primary.btn-block(href="/user/followers") Followers
+    .col-lg-9
+      textarea.form-control
+      br
+      button.btn.btn-primary.pull-right Tweet
+      .clearfix
+      hr
+      .clearfix
+        | User tweets will be here
   else
     h3 User not found
