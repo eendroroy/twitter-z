@@ -9,7 +9,7 @@ block body
   if user
     h3= user.getEmail()
     h3= user.getUserName()
-    h3= dateHelper.format( user.getDateOfBirth() )
+    h3= DH.format( user.getDateOfBirth() )
     ul
       for folllow in user.getFollowings()
         li= folllow.getUserName()

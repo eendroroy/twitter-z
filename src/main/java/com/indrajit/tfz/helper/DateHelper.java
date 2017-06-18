@@ -9,7 +9,7 @@ import java.util.Date;
  * @author indrajit
  */
 
-@JadeHelper("dateHelper")
+@JadeHelper("DH")
 public class DateHelper {
     public String format(Date date){
         if(date == null){
