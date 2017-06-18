@@ -14,7 +14,7 @@ public class BaseController {
     @Autowired
     UserService userService;
 
-    @ModelAttribute("current_user")
+    @ModelAttribute("currentUser")
     User currentUser(){
         return userService.currentUser();
     }

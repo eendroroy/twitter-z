@@ -4,7 +4,7 @@ html
     include partials/head
     block head
   body
-    if current_user
+    if currentUser
       nav.navbar.navbar-inverse.navbar-fixed-top
         .container-fluid
           .navbar-header
@@ -15,7 +15,7 @@ html
               span.icon-bar
               span.icon-bar
             a.navbar-brand(href="/")
-              | [#{current_user.getUserName()}]
+              | [#{currentUser.getUserName()}]
           .collapse.navbar-collapse#navbar
             ul.nav.navbar-nav.navbar-right
               li
