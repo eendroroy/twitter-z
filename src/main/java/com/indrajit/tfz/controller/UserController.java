@@ -111,4 +111,20 @@ public class UserController extends BaseController {
         return modelAndView;
     }
 
+    @RequestMapping(value="/followings", method = RequestMethod.GET)
+    public ModelAndView followings(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("user", userService.currentUser());
+        modelAndView.setViewName("user/followings");
+        return modelAndView;
+    }
+
+    @RequestMapping(value="/followings/{userName}", method = RequestMethod.GET)
+    public ModelAndView followings(@PathVariable(name = "userName") String userName){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("user", userService.findUserByUserName(userName));
+        modelAndView.setViewName("user/followings");
+        return modelAndView;
+    }
+
 }

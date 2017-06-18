@@ -1,0 +1,13 @@
+extends ../layout/layout
+
+block body
+
+  for following in user.followings
+    span.col-lg-3
+      .list-group
+        .list-group-item
+          = following.fullName
+        .list-group-item
+          a(href="/user/profile/#{following.userName}")= following.userName
+        .list-group-item
+          = following.email
