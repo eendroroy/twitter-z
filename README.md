@@ -1,5 +1,7 @@
 # Twitter For Zombies
 
+# ¯\\\_(ツ)_/¯
+
 ## Description:
 
 Basically it is a clone of twitter ([https://twitter.com/](https://twitter.com/)) with fewer and simpler features.
