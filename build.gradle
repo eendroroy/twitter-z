@@ -54,6 +54,9 @@ check {
             xml.enabled = false
             html.enabled = true
         }
+        sourceSets{
+            [project.sourceSets.main]
+        }
     }
 }
 
