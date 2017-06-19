@@ -15,11 +15,11 @@ public class UserHelper {
     @Autowired
     private transient UserService userService;
 
-    public boolean following(User follower, User following){
+    public boolean following(User follower, User following) {
         return userService.following(follower, following);
     }
 
-    public boolean isCurrentUser(User user){
+    public boolean isCurrentUser(User user) {
         return userService.isCurrentUser(user);
     }
 }

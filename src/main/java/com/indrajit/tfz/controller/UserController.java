@@ -30,24 +30,24 @@ import javax.validation.Valid;
 @RequestMapping("/user")
 public class UserController extends BaseController {
 
-    @RequestMapping(value="/login", method = RequestMethod.GET)
-    public ModelAndView login(){
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public ModelAndView login() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("user/login");
         return modelAndView;
     }
 
-    @RequestMapping(value="/logout", method = RequestMethod.GET)
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null){
+        if (auth != null) {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
         return "redirect:/user/login?logout";
     }
 
-    @RequestMapping(value="/registration", method = RequestMethod.GET)
-    public ModelAndView registration(){
+    @RequestMapping(value = "/registration", method = RequestMethod.GET)
+    public ModelAndView registration() {
         ModelAndView modelAndView = new ModelAndView();
         User user = new User();
         modelAndView.addObject("user", user);
@@ -76,24 +76,24 @@ public class UserController extends BaseController {
         return modelAndView;
     }
 
-    @RequestMapping(value="/profile", method = RequestMethod.GET)
-    public ModelAndView profile(){
+    @RequestMapping(value = "/profile", method = RequestMethod.GET)
+    public ModelAndView profile() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("user", userService.currentUser());
         modelAndView.setViewName("user/profile");
         return modelAndView;
     }
 
-    @RequestMapping(value="/profile/{userName}", method = RequestMethod.GET)
-    public ModelAndView profile(@PathVariable(name = "userName") String userName){
+    @RequestMapping(value = "/profile/{userName}", method = RequestMethod.GET)
+    public ModelAndView profile(@PathVariable(name = "userName") String userName) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("user", userService.findUserByUserName(userName));
         modelAndView.setViewName("user/profile");
         return modelAndView;
     }
 
-    @RequestMapping(value="/follow/{userName}", method = RequestMethod.GET)
-    public ModelAndView follow(@PathVariable(name = "userName") String userName){
+    @RequestMapping(value = "/follow/{userName}", method = RequestMethod.GET)
+    public ModelAndView follow(@PathVariable(name = "userName") String userName) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("user", userService.currentUser());
         userService.follow(userName);
@@ -102,32 +102,32 @@ public class UserController extends BaseController {
         return modelAndView;
     }
 
-    @RequestMapping(value="/followers", method = RequestMethod.GET)
-    public ModelAndView followers(){
+    @RequestMapping(value = "/followers", method = RequestMethod.GET)
+    public ModelAndView followers() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("user", userService.currentUser());
         modelAndView.setViewName("user/followers");
         return modelAndView;
     }
 
-    @RequestMapping(value="/followers/{userName}", method = RequestMethod.GET)
-    public ModelAndView followers(@PathVariable(name = "userName") String userName){
+    @RequestMapping(value = "/followers/{userName}", method = RequestMethod.GET)
+    public ModelAndView followers(@PathVariable(name = "userName") String userName) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("user", userService.findUserByUserName(userName));
         modelAndView.setViewName("user/followers");
         return modelAndView;
     }
 
-    @RequestMapping(value="/followings", method = RequestMethod.GET)
-    public ModelAndView followings(){
+    @RequestMapping(value = "/followings", method = RequestMethod.GET)
+    public ModelAndView followings() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("user", userService.currentUser());
         modelAndView.setViewName("user/followings");
         return modelAndView;
     }
 
-    @RequestMapping(value="/followings/{userName}", method = RequestMethod.GET)
-    public ModelAndView followings(@PathVariable(name = "userName") String userName){
+    @RequestMapping(value = "/followings/{userName}", method = RequestMethod.GET)
+    public ModelAndView followings(@PathVariable(name = "userName") String userName) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("user", userService.findUserByUserName(userName));
         modelAndView.setViewName("user/followings");

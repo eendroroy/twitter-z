@@ -24,7 +24,7 @@ import java.util.Set;
         "PMD.ShortClassName",
 })
 @Service("userService")
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     @Qualifier("userRepository")
     @Autowired
@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService{
     @Override
     public User currentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if(authentication == null){
+        if (authentication == null) {
             return null;
         }
         return findUserByUserName(authentication.getName());
@@ -67,7 +67,7 @@ public class UserServiceImpl implements UserService{
     @Override
     public void follow(String userName) {
         User currentUser = currentUser();
-        if(currentUser == null){
+        if (currentUser == null) {
             return;
         }
         User followUser = findUserByUserName(userName);

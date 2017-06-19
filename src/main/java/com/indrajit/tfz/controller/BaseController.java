@@ -22,7 +22,7 @@ public class BaseController {
     transient UserService userService;
 
     @ModelAttribute("currentUser")
-    User currentUser(){
+    User currentUser() {
         return userService.currentUser();
     }
 }

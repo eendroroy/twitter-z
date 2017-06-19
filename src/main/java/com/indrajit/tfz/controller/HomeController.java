@@ -18,10 +18,10 @@ import org.springframework.web.servlet.ModelAndView;
 })
 @Controller
 @RequestMapping("/")
-public class HomeController extends BaseController{
+public class HomeController extends BaseController {
 
-    @RequestMapping(value="/", method = RequestMethod.GET)
-    public ModelAndView home(){
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public ModelAndView home() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("home/index");
         return modelAndView;

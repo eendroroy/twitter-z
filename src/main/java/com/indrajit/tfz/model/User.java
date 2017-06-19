@@ -56,10 +56,10 @@ public class User {
     @Column(name = "enabled")
     private int enabled;
 
-    @ManyToMany(cascade={CascadeType.ALL})
-    @JoinTable(name="followings",
-            joinColumns={@JoinColumn(name="user_id")},
-            inverseJoinColumns={@JoinColumn(name="following_user_id")})
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(name = "followings",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "following_user_id")})
     private Set<User> followings = new HashSet<>();
 
     @ManyToMany(mappedBy = "followings")
