@@ -12,6 +12,4 @@ import java.util.Set;
 public interface TweetService {
     Set<Tweet> findByUser(User user);
     void saveTweet(Tweet tweet);
-    void deleteTweet(Tweet tweet);
-    void deleteTweetByUser(User user);
 }

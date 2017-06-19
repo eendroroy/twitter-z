@@ -22,7 +22,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
-    private int id;
+    private long id;
 
     @Column(name = "email")
     @Email(message = "*Please provide a valid Email")
@@ -58,14 +58,14 @@ public class User {
     @ManyToMany(mappedBy = "followings")
     private Set<User> followers = new HashSet<>();
 
-    @OneToMany(mappedBy = "tweets")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private Set<Tweet> tweets = new HashSet<>();
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

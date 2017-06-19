@@ -15,21 +15,21 @@ public class Tweet {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "tweet_id")
-    private int id;
+    private long id;
 
     @Column(name = "tweet")
     @NotEmpty(message = "*Please write something")
     private String tweet;
 
-    @ManyToOne(targetEntity = User.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne()
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

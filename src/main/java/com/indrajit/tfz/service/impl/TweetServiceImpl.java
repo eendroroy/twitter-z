@@ -23,21 +23,12 @@ public class TweetServiceImpl implements TweetService {
 
     @Override
     public Set<Tweet> findByUser(User user) {
-        return tweetRepository.findByUser(user);
+        return tweetRepository.findByUserId(user.getId());
     }
+
 
     @Override
     public void saveTweet(Tweet tweet) {
         tweetRepository.save(tweet);
-    }
-
-    @Override
-    public void deleteTweet(Tweet tweet) {
-        tweetRepository.delete(tweet);
-    }
-
-    @Override
-    public void deleteTweetByUser(User user) {
-        tweetRepository.deleteByUser(user);
     }
 }
