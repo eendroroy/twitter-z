@@ -40,7 +40,7 @@ configurations {
 }
 
 check {
-    pmd {
+    tasks.withType(Pmd) {
         consoleOutput = true
         ruleSets = [
                 "java-basic", "java-braces", "java-naming", "java-clone", "java-codesize",
@@ -48,7 +48,9 @@ check {
                 "java-migrating", "java-strictexception", "java-strings", "java-typeresolution",
                 "java-unusedcode"
         ]
-        sourceSets = [project.sourceSets.main]
+        sourceSets {
+            [project.sourceSets.main]
+        }
     }
     tasks.withType(Checkstyle) {
         reports {
