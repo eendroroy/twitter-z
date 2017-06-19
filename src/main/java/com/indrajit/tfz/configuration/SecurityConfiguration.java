@@ -17,6 +17,7 @@ import javax.sql.DataSource;
  * @author indrajit
  */
 
+@SuppressWarnings("PMD")
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {

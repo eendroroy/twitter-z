@@ -15,6 +15,13 @@ import java.util.Set;
  * @author indrajit
  */
 
+@SuppressWarnings({
+        "PMD.TooManyMethods",
+        "PMD.AvoidDuplicateLiterals",
+        "PMD.ShortVariable",
+        "PMD.LongVariable",
+        "PMD.ShortClassName",
+})
 @Entity
 @Table(name = "users")
 public class User {

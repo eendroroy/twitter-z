@@ -19,6 +19,13 @@ import javax.validation.Valid;
  * @author indrajit
  */
 
+@SuppressWarnings({
+        "PMD.TooManyMethods",
+        "PMD.AvoidDuplicateLiterals",
+        "PMD.ShortVariable",
+        "PMD.LongVariable",
+        "PMD.ShortClassName",
+})
 @Controller
 @RequestMapping("/user")
 public class UserController extends BaseController {

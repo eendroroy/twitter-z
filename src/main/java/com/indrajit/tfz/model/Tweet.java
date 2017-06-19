@@ -8,6 +8,13 @@ import javax.persistence.*;
  * @author indrajit
  */
 
+@SuppressWarnings({
+        "PMD.TooManyMethods",
+        "PMD.AvoidDuplicateLiterals",
+        "PMD.ShortVariable",
+        "PMD.LongVariable",
+        "PMD.ShortClassName",
+})
 @Entity
 @Table(name = "tweets")
 public class Tweet {
@@ -17,13 +24,13 @@ public class Tweet {
     @Column(name = "tweet_id")
     private long id;
 
-    @Column(name = "tweet")
+    @Column(name = "tweetBody")
     @NotEmpty(message = "*Please write something")
-    private String tweet;
+    private String tweetBody;
 
     @ManyToOne()
     @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    private User user = null;
 
     public long getId() {
         return id;
@@ -33,12 +40,12 @@ public class Tweet {
         this.id = id;
     }
 
-    public String getTweet() {
-        return tweet;
+    public String getTweetBody() {
+        return tweetBody;
     }
 
-    public void setTweet(String tweet) {
-        this.tweet = tweet;
+    public void setTweetBody(String tweetBody) {
+        this.tweetBody = tweetBody;
     }
 
     public User getUser() {

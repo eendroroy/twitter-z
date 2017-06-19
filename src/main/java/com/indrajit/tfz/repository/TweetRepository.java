@@ -12,5 +12,5 @@ import java.util.Set;
 
 @Repository("tweetRepository")
 public interface TweetRepository extends JpaRepository<Tweet, Long> {
-    Set<Tweet> findByUserId(long user_id);
+    Set<Tweet> findByUserId(long userId);
 }

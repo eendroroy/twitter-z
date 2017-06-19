@@ -14,12 +14,19 @@ import java.util.Set;
  * @author indrajit
  */
 
+@SuppressWarnings({
+        "PMD.TooManyMethods",
+        "PMD.AvoidDuplicateLiterals",
+        "PMD.ShortVariable",
+        "PMD.LongVariable",
+        "PMD.ShortClassName",
+})
 @Service("tweetService")
 public class TweetServiceImpl implements TweetService {
 
     @Qualifier("tweetRepository")
     @Autowired
-    private TweetRepository tweetRepository;
+    private transient TweetRepository tweetRepository;
 
     @Override
     public Set<Tweet> findByUser(User user) {

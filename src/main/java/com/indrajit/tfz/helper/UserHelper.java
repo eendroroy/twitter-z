@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class UserHelper {
 
     @Autowired
-    UserService userService;
+    private transient UserService userService;
 
     public boolean following(User follower, User following){
         return userService.following(follower, following);

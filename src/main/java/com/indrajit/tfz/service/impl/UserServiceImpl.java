@@ -16,15 +16,22 @@ import java.util.Set;
  * @author indrajit
  */
 
+@SuppressWarnings({
+        "PMD.TooManyMethods",
+        "PMD.AvoidDuplicateLiterals",
+        "PMD.ShortVariable",
+        "PMD.LongVariable",
+        "PMD.ShortClassName",
+})
 @Service("userService")
 public class UserServiceImpl implements UserService{
 
     @Qualifier("userRepository")
     @Autowired
-    private UserRepository userRepository;
+    private transient UserRepository userRepository;
 
     @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private transient BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     public User findUserByEmail(String email) {
@@ -63,9 +70,9 @@ public class UserServiceImpl implements UserService{
         if(currentUser == null){
             return;
         }
-        User follow_user = findUserByUserName(userName);
+        User followUser = findUserByUserName(userName);
         Set<User> followings = currentUser.getFollowings();
-        followings.add(follow_user);
+        followings.add(followUser);
         currentUser().setFollowings(followings);
         userRepository.save(currentUser);
     }

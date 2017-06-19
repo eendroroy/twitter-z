@@ -9,6 +9,13 @@ import org.springframework.web.servlet.ModelAndView;
  * @author indrajit
  */
 
+@SuppressWarnings({
+        "PMD.TooManyMethods",
+        "PMD.AvoidDuplicateLiterals",
+        "PMD.ShortVariable",
+        "PMD.LongVariable",
+        "PMD.ShortClassName",
+})
 @Controller
 @RequestMapping("/")
 public class HomeController extends BaseController{
