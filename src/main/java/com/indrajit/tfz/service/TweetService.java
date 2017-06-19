@@ -10,6 +10,9 @@ import java.util.Set;
  */
 
 public interface TweetService {
-    Set<Tweet> findByUser(User user);
-    void saveTweet(Tweet tweet);
+
+  Set<Tweet> findByUser(User user);
+
+  void saveTweet(Tweet tweet);
+
 }

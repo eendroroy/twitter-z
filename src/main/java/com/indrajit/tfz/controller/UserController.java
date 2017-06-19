@@ -16,122 +16,121 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 /**
- * @author indrajit
- */
+* @author indrajit
+*/
 
 @SuppressWarnings({
-        "PMD.TooManyMethods",
-        "PMD.AvoidDuplicateLiterals",
-        "PMD.ShortVariable",
-        "PMD.LongVariable",
-        "PMD.ShortClassName",
+    "PMD.TooManyMethods",
+    "PMD.AvoidDuplicateLiterals",
+    "PMD.ShortVariable",
+    "PMD.LongVariable",
+    "PMD.ShortClassName",
 })
 @Controller
 @RequestMapping("/user")
 public class UserController extends BaseController {
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ModelAndView login() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("user/login");
-        return modelAndView;
-    }
+  @RequestMapping(value = "/login", method = RequestMethod.GET)
+  public ModelAndView login() {
+    ModelAndView modelAndView = new ModelAndView();
+    modelAndView.setViewName("user/login");
+    return modelAndView;
+  }
 
-    @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null) {
-            new SecurityContextLogoutHandler().logout(request, response, auth);
-        }
-        return "redirect:/user/login?logout";
+  @RequestMapping(value = "/logout", method = RequestMethod.GET)
+  public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
+    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    if (auth != null) {
+      new SecurityContextLogoutHandler().logout(request, response, auth);
     }
+    return "redirect:/user/login?logout";
+  }
 
-    @RequestMapping(value = "/registration", method = RequestMethod.GET)
-    public ModelAndView registration() {
-        ModelAndView modelAndView = new ModelAndView();
-        User user = new User();
-        modelAndView.addObject("user", user);
-        modelAndView.setViewName("user/registration");
-        return modelAndView;
-    }
+  @RequestMapping(value = "/registration", method = RequestMethod.GET)
+  public ModelAndView registration() {
+    ModelAndView modelAndView = new ModelAndView();
+    User user = new User();
+    modelAndView.addObject("user", user);
+    modelAndView.setViewName("user/registration");
+    return modelAndView;
+  }
 
-    @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
-        ModelAndView modelAndView = new ModelAndView();
-        User userExists = userService.findUserByEmail(user.getEmail());
-        if (userExists != null) {
-            bindingResult
-                    .rejectValue("email", "error.user",
-                            "There is already a user registered with the email provided");
-        }
-        if (bindingResult.hasErrors()) {
-            modelAndView.addObject("user", user);
-            modelAndView.addObject("errors", bindingResult.getAllErrors());
-            modelAndView.setViewName("user/registration");
-        } else {
-            userService.saveUser(user);
-            modelAndView.addObject("successMessage", "User has been registered successfully");
-            modelAndView.setViewName("user/login");
-        }
-        return modelAndView;
+  @RequestMapping(value = "/registration", method = RequestMethod.POST)
+  public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
+    ModelAndView modelAndView = new ModelAndView();
+    User userExists = userService.findUserByEmail(user.getEmail());
+    if (userExists != null) {
+      bindingResult.rejectValue("email", "error.user",
+          "There is already a user registered with the email provided");
     }
+    if (bindingResult.hasErrors()) {
+      modelAndView.addObject("user", user);
+      modelAndView.addObject("errors", bindingResult.getAllErrors());
+      modelAndView.setViewName("user/registration");
+    } else {
+      userService.saveUser(user);
+      modelAndView.addObject("successMessage", "User has been registered successfully");
+      modelAndView.setViewName("user/login");
+    }
+    return modelAndView;
+  }
 
-    @RequestMapping(value = "/profile", method = RequestMethod.GET)
-    public ModelAndView profile() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("user", userService.currentUser());
-        modelAndView.setViewName("user/profile");
-        return modelAndView;
-    }
+  @RequestMapping(value = "/profile", method = RequestMethod.GET)
+  public ModelAndView profile() {
+    ModelAndView modelAndView = new ModelAndView();
+    modelAndView.addObject("user", userService.currentUser());
+    modelAndView.setViewName("user/profile");
+    return modelAndView;
+  }
 
-    @RequestMapping(value = "/profile/{userName}", method = RequestMethod.GET)
-    public ModelAndView profile(@PathVariable(name = "userName") String userName) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("user", userService.findUserByUserName(userName));
-        modelAndView.setViewName("user/profile");
-        return modelAndView;
-    }
+  @RequestMapping(value = "/profile/{userName}", method = RequestMethod.GET)
+  public ModelAndView profile(@PathVariable(name = "userName") String userName) {
+    ModelAndView modelAndView = new ModelAndView();
+    modelAndView.addObject("user", userService.findUserByUserName(userName));
+    modelAndView.setViewName("user/profile");
+    return modelAndView;
+  }
 
-    @RequestMapping(value = "/follow/{userName}", method = RequestMethod.GET)
-    public ModelAndView follow(@PathVariable(name = "userName") String userName) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("user", userService.currentUser());
-        userService.follow(userName);
-        modelAndView.addObject("successMessage", "Now following " + userName);
-        modelAndView.setViewName("user/profile");
-        return modelAndView;
-    }
+  @RequestMapping(value = "/follow/{userName}", method = RequestMethod.GET)
+  public ModelAndView follow(@PathVariable(name = "userName") String userName) {
+    ModelAndView modelAndView = new ModelAndView();
+    modelAndView.addObject("user", userService.currentUser());
+    userService.follow(userName);
+    modelAndView.addObject("successMessage", "Now following " + userName);
+    modelAndView.setViewName("user/profile");
+    return modelAndView;
+  }
 
-    @RequestMapping(value = "/followers", method = RequestMethod.GET)
-    public ModelAndView followers() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("user", userService.currentUser());
-        modelAndView.setViewName("user/followers");
-        return modelAndView;
-    }
+  @RequestMapping(value = "/followers", method = RequestMethod.GET)
+  public ModelAndView followers() {
+    ModelAndView modelAndView = new ModelAndView();
+    modelAndView.addObject("user", userService.currentUser());
+    modelAndView.setViewName("user/followers");
+    return modelAndView;
+  }
 
-    @RequestMapping(value = "/followers/{userName}", method = RequestMethod.GET)
-    public ModelAndView followers(@PathVariable(name = "userName") String userName) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("user", userService.findUserByUserName(userName));
-        modelAndView.setViewName("user/followers");
-        return modelAndView;
-    }
+  @RequestMapping(value = "/followers/{userName}", method = RequestMethod.GET)
+  public ModelAndView followers(@PathVariable(name = "userName") String userName) {
+    ModelAndView modelAndView = new ModelAndView();
+    modelAndView.addObject("user", userService.findUserByUserName(userName));
+    modelAndView.setViewName("user/followers");
+    return modelAndView;
+  }
 
-    @RequestMapping(value = "/followings", method = RequestMethod.GET)
-    public ModelAndView followings() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("user", userService.currentUser());
-        modelAndView.setViewName("user/followings");
-        return modelAndView;
-    }
+  @RequestMapping(value = "/followings", method = RequestMethod.GET)
+  public ModelAndView followings() {
+    ModelAndView modelAndView = new ModelAndView();
+    modelAndView.addObject("user", userService.currentUser());
+    modelAndView.setViewName("user/followings");
+    return modelAndView;
+  }
 
-    @RequestMapping(value = "/followings/{userName}", method = RequestMethod.GET)
-    public ModelAndView followings(@PathVariable(name = "userName") String userName) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("user", userService.findUserByUserName(userName));
-        modelAndView.setViewName("user/followings");
-        return modelAndView;
-    }
+  @RequestMapping(value = "/followings/{userName}", method = RequestMethod.GET)
+  public ModelAndView followings(@PathVariable(name = "userName") String userName) {
+    ModelAndView modelAndView = new ModelAndView();
+    modelAndView.addObject("user", userService.findUserByUserName(userName));
+    modelAndView.setViewName("user/followings");
+    return modelAndView;
+  }
 
 }

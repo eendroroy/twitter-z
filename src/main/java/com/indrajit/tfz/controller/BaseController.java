@@ -10,19 +10,19 @@ import org.springframework.web.bind.annotation.ModelAttribute;
  */
 
 @SuppressWarnings({
-        "PMD.TooManyMethods",
-        "PMD.AvoidDuplicateLiterals",
-        "PMD.ShortVariable",
-        "PMD.LongVariable",
-        "PMD.ShortClassName",
+    "PMD.TooManyMethods",
+    "PMD.AvoidDuplicateLiterals",
+    "PMD.ShortVariable",
+    "PMD.LongVariable",
+    "PMD.ShortClassName",
 })
 public class BaseController {
 
-    @Autowired
-    transient UserService userService;
+  @Autowired
+  transient UserService userService;
 
-    @ModelAttribute("currentUser")
-    User currentUser() {
-        return userService.currentUser();
-    }
+  @ModelAttribute("currentUser")
+  User currentUser() {
+    return userService.currentUser();
+  }
 }

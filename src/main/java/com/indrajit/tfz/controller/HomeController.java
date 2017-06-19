@@ -10,21 +10,21 @@ import org.springframework.web.servlet.ModelAndView;
  */
 
 @SuppressWarnings({
-        "PMD.TooManyMethods",
-        "PMD.AvoidDuplicateLiterals",
-        "PMD.ShortVariable",
-        "PMD.LongVariable",
-        "PMD.ShortClassName",
+    "PMD.TooManyMethods",
+    "PMD.AvoidDuplicateLiterals",
+    "PMD.ShortVariable",
+    "PMD.LongVariable",
+    "PMD.ShortClassName",
 })
 @Controller
 @RequestMapping("/")
 public class HomeController extends BaseController {
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView home() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("home/index");
-        return modelAndView;
-    }
+  @RequestMapping(value = "/", method = RequestMethod.GET)
+  public ModelAndView home() {
+    ModelAndView modelAndView = new ModelAndView();
+    modelAndView.setViewName("home/index");
+    return modelAndView;
+  }
 
 }

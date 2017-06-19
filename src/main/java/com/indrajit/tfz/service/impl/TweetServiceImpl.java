@@ -15,27 +15,27 @@ import java.util.Set;
  */
 
 @SuppressWarnings({
-        "PMD.TooManyMethods",
-        "PMD.AvoidDuplicateLiterals",
-        "PMD.ShortVariable",
-        "PMD.LongVariable",
-        "PMD.ShortClassName",
+    "PMD.TooManyMethods",
+    "PMD.AvoidDuplicateLiterals",
+    "PMD.ShortVariable",
+    "PMD.LongVariable",
+    "PMD.ShortClassName",
 })
 @Service("tweetService")
 public class TweetServiceImpl implements TweetService {
 
-    @Qualifier("tweetRepository")
-    @Autowired
-    private transient TweetRepository tweetRepository;
+  @Qualifier("tweetRepository")
+  @Autowired
+  private transient TweetRepository tweetRepository;
 
-    @Override
-    public Set<Tweet> findByUser(User user) {
-        return tweetRepository.findByUserId(user.getId());
-    }
+  @Override
+  public Set<Tweet> findByUser(User user) {
+    return tweetRepository.findByUserId(user.getId());
+  }
 
 
-    @Override
-    public void saveTweet(Tweet tweet) {
-        tweetRepository.save(tweet);
-    }
+  @Override
+  public void saveTweet(Tweet tweet) {
+    tweetRepository.save(tweet);
+  }
 }

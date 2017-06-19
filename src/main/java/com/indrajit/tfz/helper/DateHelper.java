@@ -12,11 +12,13 @@ import java.util.Locale;
 
 @JadeHelper("DH")
 public class DateHelper {
-    public String format(Date date) {
-        if (date == null) {
-            return "[Not Given]";
-        }
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
-        return sdf.format(date);
+
+  public String format(Date date) {
+    if (date == null) {
+      return "[Not Given]";
     }
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
+    return sdf.format(date);
+  }
+
 }
