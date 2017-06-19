@@ -53,13 +53,13 @@ User interface can be simple but should **contain as much information as possibl
 
 ## Technological Requirements:
 
-1. Language - (Java/Groovy/Kotlin)
-1. Web Framework - (Spring MVC / Spring Boot)
-1. ORM - Hibernate
-1. Database migration tool - (Liquibase/Flyway)
-1. Responsive UI
+1. Language - (**Java**/Groovy/Kotlin)
+1. Web Framework - (Spring MVC/**Spring Boot**)
+1. ORM - **Hibernate**
+1. Database migration tool - (**Liquibase**/Flyway)
+1. Responsive UI - **Bootstrap**
 1. JQuery
 1. JUnit (with a minimum of 70% test coverage)
-1. Must follow coding conventions
+1. Must follow coding conventions - (**PMD**, **CheckStyle**, **FindBugs**, CodeNarc)
 1. Must use Object Oriented Design Principles and Patterns
-1. Must use version control for code management. (github/bitbucket)
+1. Must use version control for code management. (**github**/bitbucket)
