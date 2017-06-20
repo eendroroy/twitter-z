@@ -22,6 +22,7 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+  @Qualifier("bCryptPasswordEncoder")
   @Autowired
   private transient BCryptPasswordEncoder bCryptPasswordEncoder;
 
