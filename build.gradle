@@ -40,7 +40,7 @@ configurations {
 }
 
 check {
-    tasks.withType(Pmd) {
+    pmd {
         consoleOutput = true
         ruleSets = [
                 "java-basic", "java-braces", "java-naming", "java-clone", "java-codesize",
@@ -48,9 +48,7 @@ check {
                 "java-migrating", "java-strictexception", "java-strings", "java-typeresolution",
                 "java-unusedcode"
         ]
-        sourceSets {
-            [project.sourceSets.main]
-        }
+        sourceSets = [project.sourceSets.main]
     }
     tasks.withType(Checkstyle) {
         reports {
@@ -69,6 +67,28 @@ check {
         sourceSets {
             [project.sourceSets.main]
         }
+    }
+}
+
+task checkMain {
+    doLast {
+        println "  ==> Running PMD for main source set"
+        pmdMain.execute()
+        println "  ==> Running CheckStyle for main source set"
+        checkstyleMain.execute()
+        println "  ==> Running FindBugs for main source set"
+        findbugsMain.execute()
+    }
+}
+
+task checkTest {
+    doLast {
+        println "  ==> Running PMD for test source set"
+        pmdTest.execute()
+        println "  ==> Running CheckStyle for test source set"
+        checkstyleTest.execute()
+        println "  ==> Running FindBugs for test source set"
+        findbugsTest.execute()
     }
 }
 
