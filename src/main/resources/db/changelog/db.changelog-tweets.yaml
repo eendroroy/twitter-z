@@ -19,7 +19,7 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: Tweet
+                  name: tweet_body
                   type: text
                   constraints:
                     nullable: false

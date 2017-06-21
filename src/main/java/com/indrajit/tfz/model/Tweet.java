@@ -24,7 +24,7 @@ public class Tweet {
   @Column(name = "tweet_id")
   private long id;
 
-  @Column(name = "tweetBody")
+  @Column(name = "tweet_body")
   @NotEmpty(message = "*Please write something")
   private String tweetBody;
 
