@@ -1,0 +1,7 @@
+form.form-horizontal(action='/user/login', method='POST')
+
+  .form-group.clearfix
+    .col-sm-3.text-right
+      label.control-label(for="tweet-body") Username
+    .col-sm-6
+      input#tweet-body.form-control(type='text', name='tweetBody', placeholder='Zombies do tweet ...')
