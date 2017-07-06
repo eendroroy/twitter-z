@@ -7,6 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -51,6 +52,7 @@ public class User {
   @Column(name = "date_of_birth")
   @DateTimeFormat(pattern = "dd/MM/yyyy")
   @NotNull(message = "*Please provide your date of birth")
+  @Past(message = "*Date of birth can not be in future")
   private Date dateOfBirth;
 
   @Column(name = "enabled")
