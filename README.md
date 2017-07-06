@@ -1,4 +1,4 @@
-# Twitter For Zombies
+# Twitter For Zombies (twitter-z)
 
 # ¯\\\_(ツ)_/¯
 
