@@ -115,7 +115,11 @@ public class User {
   }
 
   public Date getDateOfBirth() {
-    return new Date(dateOfBirth.getTime());
+    if(dateOfBirth != null) {
+      return new Date(dateOfBirth.getTime());
+    } else {
+      return null;
+    }
   }
 
   public void setDateOfBirth(Date dateOfBirth) {
