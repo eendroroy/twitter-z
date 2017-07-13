@@ -17,10 +17,7 @@ block body
         .list-group-item
           = DH.format(currentUser.dateOfBirth)
     .col-lg-9
-      textarea.form-control
-      br
-      button.btn.btn-primary.pull-right Tweet
-      .clearfix
+      include  ../tweet/_form
       hr
       .clearfix
         | Following users' tweets will be here

@@ -1,0 +1,11 @@
+form.form-horizontal(action='/tweet/create', method='POST')
+
+  //input(type="hidden", name="user", value="#{currentUser.getId()}")
+
+  .form-group.clearfix
+    .col-sm-12
+      textarea#tweet-body.form-control(name='tweetBody', placeholder='Zombies do tweet ...', rows=3)
+
+  .form-group.clearfix
+    .col-sm-12
+      button.btn.btn-primary(type='submit') Submit
