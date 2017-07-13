@@ -115,10 +115,10 @@ public class User {
   }
 
   public Date getDateOfBirth() {
-    if(dateOfBirth != null) {
-      return new Date(dateOfBirth.getTime());
-    } else {
+    if (dateOfBirth == null) {
       return null;
+    } else {
+      return new Date(dateOfBirth.getTime());
     }
   }
 
