@@ -1,6 +1,7 @@
 package com.indrajit.tfz.controller;
 
 import com.indrajit.tfz.model.User;
+import com.indrajit.tfz.service.TweetService;
 import com.indrajit.tfz.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -20,6 +21,9 @@ public class BaseController {
 
   @Autowired
   transient UserService userService;
+
+  @Autowired
+  transient TweetService tweetService;
 
   @ModelAttribute("currentUser")
   User currentUser() {
