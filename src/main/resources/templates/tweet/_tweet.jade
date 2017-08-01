@@ -1,2 +1,7 @@
-div= tweet.getUser().getUserName()
-div= tweet.getTweetBody()
+.list-group
+  .list-group-item
+    .list-group-item-heading
+      = tweet.getUser().getUserName()
+    .list-group-item-text
+      pre
+        = tweet.getTweetBody()
