@@ -1,6 +1,7 @@
 form.form-horizontal(action='/tweet/create', method='POST')
 
-  //input(type="hidden", name="user", value="#{currentUser.getId()}")
+  input(type="hidden", name="user", value="#{currentUser.getId()}")
+  input(type="hidden", name="${_csrf.parameterName}" value="${_csrf.token}")
 
   .form-group.clearfix
     .col-sm-12
