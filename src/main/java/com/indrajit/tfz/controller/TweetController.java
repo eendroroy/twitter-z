@@ -30,11 +30,11 @@ public class TweetController extends BaseController {
     if (bindingResult.hasErrors()) {
       modelAndView.addObject("tweet", tweet);
       modelAndView.addObject("errors", bindingResult.getAllErrors());
-      modelAndView.setViewName("/");
+      modelAndView.setViewName("home/index");
     } else {
       tweetService.saveTweet(tweet);
       modelAndView.addObject("successMessage", "Tweet created successfully");
-      modelAndView.setViewName("/");
+      modelAndView.setViewName("home/index");
     }
     return modelAndView;
   }
