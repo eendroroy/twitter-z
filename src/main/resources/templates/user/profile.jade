@@ -34,6 +34,7 @@ block body
       .clearfix
       hr
       .clearfix
-        | User tweets will be here
+        for tweet in user.tweets
+          include ../tweet/_tweet
   else
     h3 User not found
