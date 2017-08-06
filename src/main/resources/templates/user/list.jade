@@ -1,0 +1,13 @@
+extends ../layout/layout
+
+block body
+
+  for user in users
+    span.col-lg-3
+      .list-group
+        .list-group-item
+          = user.fullName
+        .list-group-item
+          a(href="/user/profile/#{user.userName}")= user.userName
+        .list-group-item
+          = user.email

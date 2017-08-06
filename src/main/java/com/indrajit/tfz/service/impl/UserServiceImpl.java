@@ -10,6 +10,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -32,6 +33,11 @@ public class UserServiceImpl implements UserService {
 
   @Autowired
   private transient BCryptPasswordEncoder bCryptPasswordEncoder;
+
+  @Override
+  public List<User> allUsers() {
+    return userRepository.findAll();
+  }
 
   @Override
   public User findUserByEmail(String email) {

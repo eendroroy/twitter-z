@@ -75,6 +75,14 @@ public class UserController extends BaseController {
     return modelAndView;
   }
 
+  @RequestMapping(value = "/list", method = RequestMethod.GET)
+  public ModelAndView list() {
+    ModelAndView modelAndView = new ModelAndView();
+    modelAndView.addObject("users", userService.allUsers());
+    modelAndView.setViewName("user/list");
+    return modelAndView;
+  }
+
   @RequestMapping(value = "/profile", method = RequestMethod.GET)
   public ModelAndView profile() {
     ModelAndView modelAndView = new ModelAndView();

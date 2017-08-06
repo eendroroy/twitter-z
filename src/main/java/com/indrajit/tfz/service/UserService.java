@@ -2,11 +2,15 @@ package com.indrajit.tfz.service;
 
 import com.indrajit.tfz.model.User;
 
+import java.util.List;
+
 /**
  * @author indrajit
  */
 
 public interface UserService {
+  List<User> allUsers();
+
   User findUserByEmail(String email);
 
   User findUserByUserName(String userName);
