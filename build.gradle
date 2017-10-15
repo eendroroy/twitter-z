@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '1.5.4.RELEASE'
+        springBootVersion = '1.5.7.RELEASE'
         springLoadedVersion = '1.2.6.RELEASE'
     }
     repositories {
@@ -18,7 +18,7 @@ buildscript {
 
 apply plugin: 'java'
 apply plugin: 'idea'
-apply plugin: 'pmd'
+//apply plugin: 'pmd'
 apply plugin: 'checkstyle'
 apply plugin: 'findbugs'
 apply plugin: 'org.springframework.boot'
@@ -40,16 +40,16 @@ configurations {
 }
 
 check {
-    pmd {
-        consoleOutput = true
-        ruleSets = [
-                "java-basic", "java-braces", "java-naming", "java-clone", "java-codesize",
-                "java-design", "java-finalizers", "java-imports", "java-javabeans", "java-junit",
-                "java-migrating", "java-strictexception", "java-strings", "java-typeresolution",
-                "java-unusedcode"
-        ]
-        sourceSets = [project.sourceSets.main]
-    }
+//    pmd {
+//        consoleOutput = true
+//        ruleSets = [
+//                "java-basic", "java-braces", "java-naming", "java-clone", "java-codesize",
+//                "java-design", "java-finalizers", "java-imports", "java-javabeans", "java-junit",
+//                "java-migrating", "java-strictexception", "java-strings", "java-typeresolution",
+//                "java-unusedcode"
+//        ]
+//        sourceSets = [project.sourceSets.main]
+//    }
     tasks.withType(Checkstyle) {
         reports {
             xml.enabled = false
@@ -115,6 +115,7 @@ dependencies {
         exclude module: "spring-boot-starter-tomcat"
     }
     compile("org.springframework.boot:spring-boot-starter-jetty")
+    compileOnly("org.projectlombok:lombok:1.16.18")
     runtime('mysql:mysql-connector-java')
     providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
     testCompile('org.springframework.boot:spring-boot-starter-test')
