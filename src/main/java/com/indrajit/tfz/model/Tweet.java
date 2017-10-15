@@ -1,5 +1,6 @@
 package com.indrajit.tfz.model;
 
+import lombok.Data;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
@@ -17,6 +18,7 @@ import javax.persistence.*;
 })
 @Entity
 @Table(name = "tweets")
+@Data
 public class Tweet {
 
   @Id
@@ -30,29 +32,5 @@ public class Tweet {
 
   @ManyToOne()
   @JoinColumn(name = "user_id", nullable = false)
-  private User user = null;
-
-  public long getId() {
-    return id;
-  }
-
-  public void setId(long id) {
-    this.id = id;
-  }
-
-  public String getTweetBody() {
-    return tweetBody;
-  }
-
-  public void setTweetBody(String tweetBody) {
-    this.tweetBody = tweetBody;
-  }
-
-  public User getUser() {
-    return user;
-  }
-
-  public void setUser(User user) {
-    this.user = user;
-  }
+  private User user;
 }

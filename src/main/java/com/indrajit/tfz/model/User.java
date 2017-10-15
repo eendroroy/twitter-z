@@ -1,5 +1,6 @@
 package com.indrajit.tfz.model;
 
+import lombok.Data;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -25,6 +26,7 @@ import java.util.Set;
 })
 @Entity
 @Table(name = "users")
+@Data
 public class User {
 
   @Id
@@ -62,56 +64,18 @@ public class User {
   @JoinTable(name = "followings",
       joinColumns = {@JoinColumn(name = "user_id")},
       inverseJoinColumns = {@JoinColumn(name = "following_user_id")})
-  private Set<User> followings = new HashSet<>();
+  private transient Set<User> followings;
 
   @ManyToMany(mappedBy = "followings")
-  private Set<User> followers = new HashSet<>();
+  private transient Set<User> followers;
 
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-  private Set<Tweet> tweets = new HashSet<>();
+  private transient Set<Tweet> tweets;
 
-  public long getId() {
-    return id;
-  }
-
-  public void setId(long id) {
-    this.id = id;
-  }
-
-  public String getEmail() {
-    return email;
-  }
-
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
-  public String getPassword() {
-    return password;
-  }
-
-  public String getUsername() {
-    return fullName;
-  }
-
-  public void setPassword(String password) {
-    this.password = password;
-  }
-
-  public String getFullName() {
-    return fullName;
-  }
-
-  public void setFullName(String fullName) {
-    this.fullName = fullName;
-  }
-
-  public String getUserName() {
-    return userName;
-  }
-
-  public void setUserName(String userName) {
-    this.userName = userName;
+  public User() {
+    followings = new HashSet<>();
+    followers = new HashSet<>();
+    tweets = new HashSet<>();
   }
 
   public Date getDateOfBirth() {
@@ -125,37 +89,4 @@ public class User {
   public void setDateOfBirth(Date dateOfBirth) {
     this.dateOfBirth = new Date(dateOfBirth.getTime());
   }
-
-  public int getEnabled() {
-    return enabled;
-  }
-
-  public void setEnabled(int enabled) {
-    this.enabled = enabled;
-  }
-
-  public Set<User> getFollowings() {
-    return followings;
-  }
-
-  public void setFollowings(Set<User> followings) {
-    this.followings = followings;
-  }
-
-  public Set<User> getFollowers() {
-    return followers;
-  }
-
-  public void setFollowers(Set<User> followers) {
-    this.followers = followers;
-  }
-
-  public Set<Tweet> getTweets() {
-    return tweets;
-  }
-
-  public void setTweets(Set<Tweet> tweets) {
-    this.tweets = tweets;
-  }
-
 }
