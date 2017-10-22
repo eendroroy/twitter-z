@@ -9,11 +9,15 @@ buildscript {
         maven {
             url "https://dl.bintray.com/eendroroy/com.github.eendroroy"
         }
+        // flatDir {
+        //     dirs "/home/indrajit/_WORKSPACE/gradle-spring-routes-plugin/build/libs"
+        // }
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath("org.springframework:springloaded:${springLoadedVersion}")
-        classpath 'com.github.eendroroy:gradle-springroutes-plugin:0.0.1'
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+        classpath "org.springframework:springloaded:${springLoadedVersion}"
+        classpath 'com.github.eendroroy:gradle-springroutes-plugin:0.1.1'
+        // classpath name: "gradle-spring-routes-plugin-0.1.1"
     }
 }
 
